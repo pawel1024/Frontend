@@ -1,0 +1,14 @@
+FROM node:16.15.1-alpine
+
+COPY . .
+
+WORKDIR /usr/src/app
+
+RUN npm run start-dummy-server
+RUN npm install
+
+ENV REACT_APP_API_URL=http://localhost:9595
+
+EXPOSE 3000
+
+ENTRYPOINT npm start
